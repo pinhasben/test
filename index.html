@@ -27,13 +27,13 @@
             font-family: Arial, sans-serif;
             z-index: 1000;
             line-height: 1.4;
-            white-space: normal; /* Permet au texte de passer à la ligne */
+            white-space: normal;
         }
 
         .typing-text {
             display: inline-block;
             overflow: hidden;
-            white-space: normal; /* Change pour que le texte s'affiche bien */
+            white-space: normal;
             border-right: 2px solid white;
             padding-right: 5px;
             max-width: 90%;
@@ -41,8 +41,8 @@
 
         @media (max-width: 600px) {
             .banner {
-                font-size: 16px; /* Réduit la taille du texte sur mobile */
-                padding: 10px 5px; /* Ajuste l’espace autour */
+                font-size: 16px;
+                padding: 10px 5px;
                 max-width: 100%;
             }
 
@@ -51,7 +51,7 @@
                 max-width: 100%;
                 display: block;
                 text-align: center;
-                word-wrap: break-word; /* Coupe proprement les longs textes */
+                word-wrap: break-word;
                 overflow-wrap: break-word;
             }
         }
@@ -64,7 +64,7 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const text = "OFFRE SPÉCIALE<br>FRANCHISE ASSURANCE OFFERTE<br>(REMBOURSÉE)";
+            const text = "OFFRE SPÉCIALE\nFRANCHISE ASSURANCE\nOFFERTE\n(REMBOURSÉE)";
             let index = 0;
             let isDeleting = false;
             const speed = 100;
@@ -74,7 +74,7 @@
             function typeWriter() {
                 if (!isDeleting) {
                     if (index < text.length) {
-                        typingElement.innerHTML = text.substring(0, index + 1);
+                        typingElement.innerHTML = text.substring(0, index + 1).replace(/\n/g, "<br>");
                         index++;
                         setTimeout(typeWriter, speed);
                     } else {
@@ -85,7 +85,7 @@
                     }
                 } else {
                     if (index > 0) {
-                        typingElement.innerHTML = text.substring(0, index - 1);
+                        typingElement.innerHTML = text.substring(0, index - 1).replace(/\n/g, "<br>");
                         index--;
                         setTimeout(typeWriter, speed / 2);
                     } else {
