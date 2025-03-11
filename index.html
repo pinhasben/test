@@ -16,28 +16,44 @@
             top: 0;
             left: 0;
             width: 100%;
-            padding: 20px 0;
+            padding: 15px 0;
             background: linear-gradient(45deg, red, white, blue);
             background-size: 200% 200%;
             animation: waving 5s infinite ease-in-out;
             text-align: center;
-            font-size: 24px;
+            font-size: 22px;
             font-weight: bold;
             color: white;
             font-family: Arial, sans-serif;
             z-index: 1000;
+            line-height: 1.4;
+            white-space: normal; /* Permet au texte de passer à la ligne */
         }
 
         .typing-text {
             display: inline-block;
             overflow: hidden;
-            white-space: nowrap;
+            white-space: normal; /* Change pour que le texte s'affiche bien */
             border-right: 2px solid white;
             padding-right: 5px;
+            max-width: 90%;
         }
 
-        @keyframes blink {
-            50% { border-color: transparent; }
+        @media (max-width: 600px) {
+            .banner {
+                font-size: 16px; /* Réduit la taille du texte sur mobile */
+                padding: 10px 5px; /* Ajuste l’espace autour */
+                max-width: 100%;
+            }
+
+            .typing-text {
+                font-size: 16px;
+                max-width: 100%;
+                display: block;
+                text-align: center;
+                word-wrap: break-word; /* Coupe proprement les longs textes */
+                overflow-wrap: break-word;
+            }
         }
     </style>
 </head>
@@ -48,7 +64,7 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const text = "OFFRE SPÉCIALE<br>FRANCHISE ASSURANCE OFFERTE (REMBOURSÉE)";
+            const text = "OFFRE SPÉCIALE<br>FRANCHISE ASSURANCE OFFERTE<br>(REMBOURSÉE)";
             let index = 0;
             let isDeleting = false;
             const speed = 100;
